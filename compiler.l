@@ -26,11 +26,11 @@
 ";"                 { return SEMICOLON; }
 ":"                 { return COLON; }
 ","                 { return COMMA; }
+\".*\"   { yylval.sval = strdup(yytext); return STRING; }
 [a-zA-Z_][a-zA-Z0-9_]*   { yylval.sval = strdup(yytext); return IDENTIFIER; }
 [0-9]+              { yylval.sval = strdup(yytext); return INTEGER_LITERAL; }
 [ \t\n]+            ; // Ignore whitespace
-
-.                   { fprintf(stderr, "Error: Unrecognized character %s\n", yytext); }
+.                   ; /* ignore other characters */
 
 %%
 

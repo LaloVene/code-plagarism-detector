@@ -1,2 +1,17 @@
-WHILE loop
-IF statement
+FUN
+FUN
+WHILE
+FUN
+FUN
+FUN
+FUN
+FUN
+FUN
+IF
+FUN
+FUN
+FUN
+FUN
+ELSE
+FUN
+FUN

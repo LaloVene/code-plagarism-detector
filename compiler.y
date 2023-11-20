@@ -11,9 +11,9 @@ FILE *outputFile;
     char *sval;
 }
 
-%token <sval> IF ELSE FOR WHILE SWITCH CASE DEFAULT EQ NEQ LT LEQ GT GEQ AND OR LBRACE RBRACE LPAREN RPAREN SEMICOLON COLON COMMA IDENTIFIER INTEGER_LITERAL
+%token <sval> IF ELSE FOR WHILE SWITCH CASE DEFAULT EQ NEQ LT LEQ GT GEQ AND OR LBRACE RBRACE LPAREN RPAREN SEMICOLON COLON COMMA IDENTIFIER INTEGER_LITERAL STRING
 
-%type <sval> expression variable constant initialization condition update
+%type <sval> expression function_call
 
 %%
 
@@ -22,96 +22,39 @@ instructions:
 ;
 
 instruction:
-    | IF LPAREN expression RPAREN block { fprintf(outputFile, "IF statement\n"); }
-    | FOR LPAREN initialization SEMICOLON condition SEMICOLON update RPAREN block { fprintf(outputFile, "FOR loop\n"); }
-    | WHILE LPAREN condition RPAREN block { fprintf(outputFile, "WHILE loop\n"); }
-    | SWITCH LPAREN expression RPAREN switch_block { fprintf(outputFile, "SWITCH statement\n"); }
-    | other_statement           { fprintf(outputFile, "Other statement\n"); }
-    | error                     { fprintf(outputFile, "Invalid statement\n"); }
+    | IF LPAREN expression RPAREN { fprintf(outputFile, "IF\n"); }
+    | ELSE { fprintf(outputFile, "ELSE\n"); }
+    | FOR LPAREN expression SEMICOLON expression SEMICOLON expression RPAREN { fprintf(outputFile, "FOR\n"); }
+    | WHILE LPAREN expression RPAREN { fprintf(outputFile, "WHILE\n"); }
+    | SWITCH LPAREN expression RPAREN { fprintf(outputFile, "SWITCH\n"); }
+    | function_call          { fprintf(outputFile, "FUN\n"); }
+    | error
 ;
 
-block:
-    LBRACE statement_list RBRACE
 
-statement_list:
-    statement
-    | statement statement_list
+function_call:
+    IDENTIFIER LPAREN fgets_arguments RPAREN
 ;
 
-statement:
-    if_statement
-    | for_loop
-    | while_loop  { fprintf(outputFile, "WHILE loop\n"); }
-    | switch_statement
-    | other_statement
-;
-
-if_statement:
-    IF LPAREN expression RPAREN block
-    | IF LPAREN expression RPAREN block ELSE block
-;
-
-for_loop:
-    FOR LPAREN initialization SEMICOLON condition SEMICOLON update RPAREN block
-;
-
-while_loop:
-    WHILE LPAREN condition RPAREN block
-;
-
-switch_statement:
-    SWITCH LPAREN expression RPAREN switch_block
-;
-
-switch_block:
-    LBRACE case_list RBRACE
-;
-
-case_list:
-    case_statement
-    | case_statement case_list
-;
-
-case_statement:
-    CASE constant COLON statement_list
-    | DEFAULT COLON statement_list
-;
-
-other_statement:
-    SEMICOLON
-    | expression SEMICOLON
-    | IDENTIFIER COLON statement
-;
-
-initialization:
-    expression
-;
-
-condition:
-    expression
-;
-
-update:
-    expression
+fgets_arguments:
+    | expression COMMA expression COMMA expression COMMA expression
+    | expression COMMA expression COMMA expression
+    | expression COMMA expression
+    | expression
 ;
 
 expression:
-    variable relational_operator variable
-    | variable relational_operator constant
-    | constant relational_operator variable
-    | constant relational_operator constant
+    | relational_variable relational_operator relational_variable
     | expression logical_operator expression
     | LPAREN expression RPAREN
-    | variable
-    | constant
+    | IDENTIFIER
+    | function_call
+    | INTEGER_LITERAL
+    | STRING
 ;
 
-variable:
-    IDENTIFIER
-;
-
-constant:
-    INTEGER_LITERAL
+relational_variable:
+    IDENTIFIER | function_call | INTEGER_LITERAL | STRING
 ;
 
 relational_operator:
