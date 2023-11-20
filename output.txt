@@ -1,0 +1,76 @@
+  - Files: compiled/036.txt and compiled/035.txt
+    Similarity: 51.72%
+    Total Overlap: 60
+
+  - Files: compiled/017.txt and compiled/018.txt
+    Similarity: 67.19%
+    Total Overlap: 43
+
+  - Files: compiled/040.txt and compiled/026.txt
+    Similarity: 78.57%
+    Total Overlap: 11
+
+  - Files: compiled/040.txt and compiled/064.txt
+    Similarity: 68.75%
+    Total Overlap: 11
+
+  - Files: compiled/026.txt and compiled/064.txt
+    Similarity: 84.62%
+    Total Overlap: 11
+
+  - Files: compiled/073.txt and compiled/074.txt
+    Similarity: 43.87%
+    Total Overlap: 68
+
+  - Files: compiled/063.txt and compiled/062.txt
+    Similarity: 34.85%
+    Total Overlap: 23
+
+  - Files: compiled/045.txt and compiled/034.txt
+    Similarity: 38.89%
+    Total Overlap: 14
+
+  - Files: compiled/045.txt and compiled/051.txt
+    Similarity: 62.16%
+    Total Overlap: 23
+
+  - Files: compiled/034.txt and compiled/051.txt
+    Similarity: 35.14%
+    Total Overlap: 13
+
+  - Files: compiled/070.txt and compiled/058.txt
+    Similarity: 40.00%
+    Total Overlap: 10
+
+  - Files: compiled/027.txt and compiled/065.txt
+    Similarity: 35.48%
+    Total Overlap: 11
+
+  - Files: compiled/044.txt and compiled/049.txt
+    Similarity: 41.51%
+    Total Overlap: 22
+
+  - Files: compiled/049.txt and compiled/001.txt
+    Similarity: 35.42%
+    Total Overlap: 17
+
+  - Files: compiled/021.txt and compiled/030.txt
+    Similarity: 34.09%
+    Total Overlap: 15
+
+  - Files: compiled/053.txt and compiled/054.txt
+    Similarity: 37.78%
+    Total Overlap: 17
+
+  - Files: compiled/076.txt and compiled/077.txt
+    Similarity: 32.71%
+    Total Overlap: 35
+
+  - Files: compiled/044.txt and compiled/005.txt
+    Similarity: 38.89%
+    Total Overlap: 21
+
+  - Files: compiled/005.txt and compiled/006.txt
+    Similarity: 31.82%
+    Total Overlap: 14
+

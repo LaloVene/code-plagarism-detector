@@ -4,6 +4,7 @@
 
 %%
 [ \t]+                  ; /* ignore whitespace */
+"#include"          { return INCLUDE; }
 "if"                { return IF; }
 "else"              { return ELSE; }
 "for"               { return FOR; }
@@ -11,6 +12,16 @@
 "switch"            { return SWITCH; }
 "case"              { return CASE; }
 "default"           { return DEFAULT; }
+"printf"            { return PRINT; }
+"int"               { return DECLARATION; }
+"char"              { return DECLARATION; }
+"double"            { return DECLARATION; }
+"float"             { return DECLARATION; }
+"void"              { return DECLARATION; }
+"return"            { return RETURN; }
+"="                 { return ASSIGN; }
+"++"                { return INCREMENT; }
+"--"                { return DECREMENT; }
 "=="                { return EQ; }
 "!="                { return NEQ; }
 "<"                 { return LT; }
@@ -26,9 +37,9 @@
 ";"                 { return SEMICOLON; }
 ":"                 { return COLON; }
 ","                 { return COMMA; }
-\".*\"   { yylval.sval = strdup(yytext); return STRING; }
-[a-zA-Z_][a-zA-Z0-9_]*   { yylval.sval = strdup(yytext); return IDENTIFIER; }
-[0-9]+              { yylval.sval = strdup(yytext); return INTEGER_LITERAL; }
+\".*\"              {return STRING; }
+[a-zA-Z_][a-zA-Z0-9_]*  {return IDENTIFIER; }
+[0-9]+              {return INTEGER_LITERAL; }
 [ \t\n]+            ; // Ignore whitespace
 .                   ; /* ignore other characters */
 
