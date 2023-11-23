@@ -2,7 +2,7 @@ import os
 import hashlib
 
 
-class Dolos:
+class Model:
     def __init__(self, source_folder, output_file, k=5, window_size=10):
         self.source_folder = source_folder
         self.output_file = output_file
@@ -88,9 +88,9 @@ class Dolos:
 def main():
     source_folder = "compiled"
     output_file = "output.txt"  # Specify the desired output file
-    dolos = Dolos(source_folder, output_file, k=5, window_size=10)
-    dolos.process_folder()
-    dolos.report_duplicates()
+    model = Model(source_folder, output_file, k=5, window_size=10)
+    model.process_folder()
+    model.report_duplicates()
 
 
 if __name__ == "__main__":
