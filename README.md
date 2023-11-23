@@ -11,7 +11,7 @@ This project implements a code plagiarism detection algorithm. The algorithm wor
 
 2. **Fingerprinting:**
 
-   - To measure similarities between files, The algorithm finds common sequences of tokens using subsequences of fixed length called k-grams. These k-grams are hashed using a rolling hash function (similar to Rabin-Karp string matching algorithm). The selected hashes are stored as fingerprints.
+   - To measure similarities between files, The algorithm finds common sequences of tokens using subsequences of fixed length called k-grams. These k-grams are hashed using a rolling hash function (similar to Rabin-Karp string matching algorithm).
 
 3. **Indexing:**
 
